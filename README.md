@@ -1,44 +1,53 @@
 # Sales Reconciliation & Aging Tracker
 
+![Dashboard Preview](dashboard_preview.png)
+
 ## Overview
-Automated multi-source reconciliation tool built in Excel + Python, 
-tracking payment gaps, amount mismatches, and shipment exceptions 
-across 500 orders from 3 integrated data sources.
+An automated reconciliation tool that integrates three source systems — 
+Orders, Payments, and Shipments — to identify payment gaps, amount mismatches, 
+and unshipped orders. Built using Python for data preparation and Excel 
+Power Query for ETL and reporting.
 
 ## Problem Statement
-Finance and operations teams manually reconcile orders, payments, and 
-shipments every month — a time-consuming error-prone process. This tool 
-automates the entire workflow with one-click refresh.
+Operations and finance teams spend significant time each month manually 
+matching orders against payments and shipments. This tool automates that 
+process — replace the source files, click Refresh All, and the dashboard 
+updates instantly.
 
-## Key Metrics
-| Metric | Value |
-|--------|-------|
-| Total Orders | 500 |
-| Reconciled (Clear) | 358 |
-| Exception Rate | 28.4% |
-| Payment Missing | 30 orders |
-| Amount Mismatches | 22 orders |
-| Unreconciled Amount | ₹39,93,038 |
+## Key Findings
+- **28.4% exception rate** — 142 of 500 orders had reconciliation issues
+- **₹39.9L in unreconciled transactions** requiring follow-up
+- **Appliances and Grocery** categories had the highest exception concentration (47%)
+- **30 orders** had no payment record — possible payment gateway failures
+- **22 orders** showed amount mismatches — likely partial payments or discounts
 
-## Key Insights
-- 28.4% exception rate representing ₹39.9L in unreconciled transactions
-- Appliances (35) and Grocery (32) categories have highest exception concentration
-- 30 orders have no payment record — requires payment gateway audit
-- 22 orders show amount mismatches likely due to partial payments or discounts
+## Dashboard Features
+- 6 KPI cards: Total Orders, Reconciled Orders, Exception Rate, 
+  Payment Missing, Amount Mismatches, Unreconciled Amount
+- Reconciliation Status donut chart
+- Exceptions by Product Category bar chart  
+- Payment Method distribution column chart
+- Variance commentary with actionable insights
+- Exception Report sheet with severity-based conditional formatting
 
-## Tools & Technologies
-- **Python** — Pandas, NumPy (synthetic data generation)
-- **Excel Power Query** — ETL pipeline, multi-source merge, M language transformations
-- **Excel** — Dashboard, KPI cards, conditional formatting, exception report
+## Tools Used
+- **Python** (Pandas, NumPy) — data generation and preprocessing
+- **Excel Power Query** — ETL pipeline, 3-source merge using Left Outer Join
+- **Excel** — dashboard design, KPI reporting, exception tracking
+
+## What I Learned
+- How to build a multi-source ETL pipeline in Power Query using M language
+- How Left Outer Join logic works for reconciliation (matching vs unmatched records)
+- How to design exception reports with severity flagging for business use
+- How to structure a self-refreshing Excel reporting tool
 
 ## Project Structure
 ```
 sales-reconciliation-tracker/
-├── data/
-│   └── raw/
-│       ├── orders.csv
-│       ├── payments.csv
-│       └── shipments.csv
+├── data/raw/
+│   ├── orders.csv        
+│   ├── payments.csv      
+│   └── shipments.csv     
 ├── notebooks/
 │   └── data_generation.ipynb
 ├── excel/
@@ -47,16 +56,16 @@ sales-reconciliation-tracker/
 ```
 
 ## How to Use
-1. Replace CSV files in `data/raw/` with new month's data
-2. Open Excel file
+1. Replace CSV files in `data/raw/` with new data
+2. Open the Excel file
 3. Data tab → Refresh All
-4. Dashboard updates automatically
+4. Everything updates automatically
 
-## Data Source
-Synthetically generated using Python to simulate realistic e-commerce 
-reconciliation scenario. Intentional mismatches introduced to demonstrate 
-exception detection logic.
+## Data Note
+Data is synthetically generated using Python to simulate a realistic 
+reconciliation scenario. Intentional mismatches were introduced to 
+demonstrate exception detection logic.
 
 ## Author
-Agrima | Data Analyst Portfolio Project
-GitHub: github.com/agrimams58
+Agrima | Data Analyst Portfolio Project | April 2026  
+GitHub: [github.com/agrimams58](https://github.com/agrimams58)
